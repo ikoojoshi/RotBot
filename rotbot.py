@@ -4,9 +4,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys 
 from selenium.webdriver.common.by import By 
 import time
-import datetime
-import os
-import sys
 import praw
 import schedule
 
@@ -22,7 +19,7 @@ def connect():
 
 def sendpost(text):
 	global driver, wait
-	target = '"Prabhnoor"'
+	target = '"Anand"'
 	x_arg = '//span[contains(@title,' + target + ')]'
 	#wait = WebDriverWait(driver, 600)
 	group_title = wait.until(EC.presence_of_element_located((By.XPATH, x_arg))) 
@@ -56,9 +53,6 @@ def getpost():
 def post():
 	text = getpost()
 	sendpost(text)
-	#schedule.every().day.at("13:17").do(post)
-	#schedule.every().day.at("13:18").do(post)
-	#schedule.every().day.at("13:19").do(post)
 	
 def scheduler():
 	while True:
@@ -67,9 +61,7 @@ def scheduler():
 			
 def main():
 	connect()
-	schedule.every().day.at("13:20").do(post)
-	schedule.every().day.at("13:21").do(post)
-	schedule.every().day.at("13:22").do(post)
+	schedule.every().day.at("13:54").do(post)
 	scheduler()
 
 if __name__ == "__main__":
